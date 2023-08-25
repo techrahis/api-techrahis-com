@@ -4,6 +4,7 @@ const app = express();
 app.use(cors()); // for CORS poilicy
 app.use(express.urlencoded({ extended: true })); // for accessing res body
 app.set("view engine", "ejs"); // for rendering views
+app.set("views", "./views"); // for vercel to render the view -- found on slack-exchange
 
 // root api route
 app.get("/", (req, res) => {
