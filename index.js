@@ -3,12 +3,14 @@ var cors = require("cors");
 const app = express();
 app.use(cors()); // for CORS poilicy
 app.use(express.urlencoded({ extended: true })); // for accessing res body
-app.set("view engine", "ejs"); // for rendering views
-app.set("views", "./views"); // for vercel to render the view -- found on slack-exchange
 
 // root api route
 app.get("/", (req, res) => {
-  res.render("index");
+  res.status(200).json({
+    status: "200 OK",
+    route: "api.rajarshisamaddar.com",
+    message: "Server is running at an unstoppable speed 🚀",
+  });
 });
 
 // spotify router part
