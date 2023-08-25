@@ -1,0 +1,44 @@
+require("dotenv").config();
+const client_id = process.env.SPOTIFY_CLIENT_ID;
+const client_secret = process.env.SPOTIFY_CLIENT_SECRET;
+const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN;
+
+const getAccessToken = async () => {
+  // Make a POST request to the Spotify API to request a new access token
+  const response = await fetch("https://accounts.spotify.com/api/token", {
+    method: "POST",
+    headers: {
+      // Set the Authorization header with the client ID and client secret encoded in base64
+      Authorization: `Basic ${Buffer.from(
+        `${client_id}:${client_secret}`
+      ).toString("base64")}`,
+      "Content-Type": "application/x-www-form-urlencoded",
+    },
+    // Set the body of the request to include the refresh token and grant type
+    body: new URLSearchParams({
+      grant_type: "refresh_token",
+      refresh_token: refresh_token,
+    }),
+  });
+
+  // Return the JSON response from the API
+  return response.json();
+};
+
+/**
+ * Makes a request to the Spotify API to retrieve the currently playing song for the user.
+ */
+const currentlyPlayingSong = async () => {
+  // Obtain an access token
+  const { access_token } = await getAccessToken();
+
+  // Make a request to the Spotify API to retrieve the currently playing song for the user
+  return fetch("https://api.spotify.com/v1/me/player/currently-playing", {
+    headers: {
+      // Set the Authorization header with the access token
+      Authorization: `Bearer ${access_token}`,
+    },
+  });
+};
+
+module.exports = { currentlyPlayingSong };
