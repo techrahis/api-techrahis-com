@@ -21,4 +21,8 @@ app.use("/spotify", spotifyRouter);
 const newsletterRouter = require("./lib/newsletter/router.js");
 app.use("/newsletter", newsletterRouter);
 
+// to get the data of recent watched movies and tv series
+const recentMovies = require("./lib/movies/router.js");
+app.use("/recent-movies", recentMovies);
+
 app.listen(3300);
