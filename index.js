@@ -25,4 +25,8 @@ app.use("/newsletter", newsletterRouter);
 const recentMovies = require("./lib/movies/router.js");
 app.use("/movies", recentMovies);
 
+// to get the resume
+const resumeRouter = require("./lib/resume/router.js");
+app.use("/get-resume", resumeRouter);
+
 app.listen(3300);
