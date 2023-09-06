@@ -1,7 +1,7 @@
 const express = require("express");
 var cors = require("cors");
 const app = express();
-app.use(cors()); // for CORS poilicy
+app.use(cors()); // for CORS policy
 app.use(express.urlencoded({ extended: true })); // for accessing res body
 
 // root api route
