@@ -29,4 +29,8 @@ app.use("/movies", recentMovies);
 const resumeRouter = require("./lib/resume/router.js");
 app.use("/get-resume", resumeRouter);
 
+// to send email notification
+const emailRouter = require("./lib/email/router.js");
+app.use("/send-email", emailRouter);
+
 app.listen(3300);
