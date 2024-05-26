@@ -7,7 +7,16 @@ datasource db {
   url      = env("PG_SQL_CONNECTION_STRING")
 }
 
-model Newsletters {
+model CONTACT_FORM_SUBMISSIONS {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model NEWSLETTER_SUBSCRIBERS {
   id        String   @id @default(cuid())
   email     String   @unique
   createdAt DateTime @default(now())
