@@ -12,6 +12,7 @@ model CONTACT_FORM_SUBMISSIONS {
   name      String
   email     String
   message   String
+  receipt   Boolean
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
