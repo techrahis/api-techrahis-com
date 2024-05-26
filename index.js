@@ -24,4 +24,8 @@ app.use("/newsletter", newsletterRouter);
 const emailRouter = require("./lib/email/router.js");
 app.use("/send-email", emailRouter);
 
+// get resume
+const resumeRouter = require("./lib/resume/router.js");
+app.use("/resume", resumeRouter);
+
 app.listen(3300);
