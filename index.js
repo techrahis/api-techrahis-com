@@ -26,4 +26,8 @@ app.use("/send-email", emailRouter);
 const resumeRouter = require("./lib/resume/router.js");
 app.use("/resume", resumeRouter);
 
+// get site map
+const siteMapRouter = require("./lib/sitemap/router.js");
+app.use("/sitemap", siteMapRouter);
+
 app.listen(3300);
